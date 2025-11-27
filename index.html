@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>HAPPY BIRTHDAY MY LOVE 💖</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* BACKGROUND */
+body {
+  background: linear-gradient(120deg,#f1c5c7,#fad0c4);
+  margin:0;
+  overflow-x:hidden;
+  font-family: 'Poppins', sans-serif;
+  text-align:center;
+}
+
+/* TITLE */
+h1 {
+  color:#fff;
+  font-family:'Dancing Script',cursive;
+  font-size:60px;
+  font-weight:600;
+  margin-top:70px;
+  text-shadow:0 2px 6px rgba(0,0,0,0.2);
+  display:none;
+  animation: fadeInDown 2s ease;
+}
+
+@keyframes fadeInDown {
+ from{opacity:0;transform:translateY(-40px);}
+ to{opacity:1;transform:translateY(0);}
+}
+
+/* COUNTDOWN */
+#countdownContainer {
+ margin-top:140px;
+ color:#ff6fa8;
+}
+#countdownContainer h2 {
+ font-size:40px;
+ font-weight:600;
+}
+#timerBox {
+  background: rgba(255,255,255,0.8);
+  border: 2px solid #ffb6d5;
+  padding: 22px 40px;
+  border-radius: 30px;
+  font-size: 32px;
+  color: #ff6fa8;
+  font-weight: 600;
+  box-shadow: 
+    0 0 15px #ffd1ea,
+    inset 0 0 10px #fff;
+}
+
+
+/* HEART FLOATING */
+.heart {
+  position: absolute;
+  bottom: -20px;
+  width: 20px;
+  height: 20px;
+  background: #ff4d6d;
+  transform: rotate(-45deg);
+  animation: floatUp linear infinite;
+  filter: drop-shadow(0 0 8px pink);
+}
+
+
+.heart::before,.heart::after{
+  content:'';
+  position:absolute;
+  width:18px;
+  height:18px;
+  background:red;
+  border-radius:50%;
+}
+.heart::before{top:-9px;left:0;}
+.heart::after{left:9px;top:0;}
+
+@keyframes floatUp {
+  from{transform:translateY(0) rotate(-45deg);opacity:1;}
+  to{transform:translateY(-800px) rotate(-45deg);opacity:0;}
+}
+
+/* BIG HEART */
+#bigHeart {
+  position: relative;
+  width: 150px;
+  height: 150px;
+  background: #ff4f86;
+  transform: rotate(-45deg);
+  margin: 110px auto;
+  cursor: pointer;
+  animation: heartBeat 1.4s infinite;
+  box-shadow: 0 0 25px #ff9ec4;
+}
+
+#bigHeart:hover{
+ transform:rotate(-45deg) scale(1.12);
+}
+#bigHeart::before,
+#bigHeart::after {
+  content: "";
+  position: absolute;
+  width: 150px;
+  height: 150px;
+  background: #ff4f86;
+  border-radius: 50%;
+}
+
+#bigHeart::before {
+  top: -75px;
+  left: 0;
+}
+
+#bigHeart::after {
+  left: 75px;
+  top: 0;
+}
+
+
+#bigHeartText{
+ position:absolute;
+ top:60%;
+ left:50%;
+ transform:translate(-50%,-50%) rotate(45deg);
+ color:white;
+ font-weight:bold;
+}
+@keyframes heartBeat {
+  0% { transform: rotate(-45deg) scale(1); }
+  50% { transform: rotate(-45deg) scale(1.1); }
+  100% { transform: rotate(-45deg) scale(1); }
+}
+
+/* MESSAGE */
+#messageBox{
+ display:none;
+ background:white;
+ padding:30px 40px;
+ border-radius:25px;
+ color:#ff3366;
+ font-size:22px;
+ margin:auto;
+ margin-top:40px;
+ max-width:90%;
+ box-shadow:0 0 20px rgba(0,0,0,0.2);
+ animation: fadeIn 1s ease;
+}
+@keyframes fadeIn{
+ from{opacity:0;transform:scale(.8);}
+ to{opacity:1;transform:scale(1);}
+}
+
+.sticker{font-size:55px;}
+
+/* MEMORIES */
+#memories{
+ display:none;
+ background:white;
+ padding:40px 20px;
+ margin-top:80px;
+ border-radius:25px 25px 0 0;
+}
+#memories h2{
+ font-family:'Dancing Script',cursive;
+ color:#ff3366;
+ font-size:42px;
+}
+
+.flip-gallery{
+ display:flex;
+ flex-wrap:wrap;
+ justify-content:center;
+ gap:20px;
+ margin-top:30px;
+}
+.flip-card{
+ width:220px;
+ height:250px;
+ perspective:1000px;
+}
+.flip-inner{
+ width:100%;
+ height:100%;
+ transition:transform .8s;
+ transform-style:preserve-3d;
+}
+.flip-card:hover .flip-inner{transform:rotateY(180deg);}
+.front-face,.back-face{
+ width:100%;
+ height:100%;
+ position:absolute;
+ backface-visibility:hidden;
+ border-radius:15px;
+ overflow:hidden;
+ box-shadow:0 0 12px rgba(0,0,0,.25);
+}
+.front-face{
+ background:white;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ color:#ff5d91;
+ font-weight:600;
+ padding:12px;
+}
+.back-face{
+ transform:rotateY(180deg);
+}
+.back-face img{
+ width:100%;
+ height:100%;
+ object-fit:cover;
+}
+
+/* REMINDER */
+#reminder{
+ display:none;
+ background:linear-gradient(120deg,#fad0c4,#ff9a9e);
+ color:white;
+ padding:50px 20px;
+ font-size:24px;
+ margin-top:80px;
+}
+/* REAL BIRTHDAY CARD */
+#realCard {
+  width: 360px;
+  height: 240px;
+  margin: 50px auto;
+  perspective: 1500px;
+}
+
+.card-wrap {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+}
+
+/* FRONT */
+.card-front {
+  position: absolute;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(145deg, #ffb6c1, #ffd1dc);
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(255, 105, 135, 0.4);
+  text-align: center;
+  padding-top: 50px;
+  font-family: 'Dancing Script', cursive;
+  backface-visibility: hidden;
+  transform-origin: left;
+  transition: transform 1s ease;
+}
+
+.card-front h3 {
+  font-size: 32px;
+  color: #fff;
+}
+
+.card-front p {
+  font-size: 18px;
+  color: #fff;
+}
+
+.card-front span {
+  font-size: 40px;
+}
+
+/* Ribbon */
+.ribbon {
+  width: 100%;
+  height: 20px;
+  background: #ff69b4;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 16px 16px 0 0;
+}
+
+/* INSIDE */
+.card-inside {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #fff0f6;
+  border-radius: 16px;
+  box-shadow: inset 0 0 15px rgba(255, 160, 190, 0.5);
+  padding: 20px;
+  font-family: 'Dancing Script', cursive;
+  color: #ff4f87;
+  transform: rotateY(0deg);
+  backface-visibility: hidden;
+}
+
+.card-inside h4 {
+  font-size: 26px;
+}
+
+.card-inside p {
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* OPEN EFFECT */
+#realCard.open .card-front {
+  transform: rotateY(-160deg);
+}
+
+/* GLOW */
+#realCard {
+  animation: softGlow 2s infinite alternate;
+}
+
+@keyframes softGlow {
+  0% { box-shadow: 0 0 15px pink; }
+  100% { box-shadow: 0 0 40px hotpink; }
+}
+#mainTitle,
+#bigHeart,
+#messageBox,
+#memories,
+#reminder {
+  display: none;
+}
+
+
+
+</style>
+</head>
+<body>
+
+<div id="countdownContainer">
+  <h2>⏳ Surprise Unlocks In...</h2>
+  <div id="timerBox"></div>
+</div>
+
+<h1 id="mainTitle">HAPPY BIRTHDAY MY LOVE!!</h1>
+
+<audio id="bgMusic" src="https://www.bensound.com/bensound-music/bensound-sunny.mp3" muted></audio>
+
+<div id="bigHeart">
+ <div id="bigHeartText">Click 💖</div>
+</div>
+
+<div id="messageBox">
+ <div class="sticker">💞</div>
+ Dear Akky Baby<br>MY STUPID<br><br>
+ HAPPY BIRTHDAY TO MY CUTIE PIE 💖
+</div>
+
+<section id="memories">
+<h2>📸 Our Best Moments 💞</h2>
+<div class="flip-gallery">
+
+<div class="flip-card"><div class="flip-inner">
+<div class="front-face">🥺 This day is special</div>
+<div class="back-face"><img src="f1.jpeg"></div>
+</div></div>
+
+<div class="flip-card"><div class="flip-inner">
+<div class="front-face">💖 Every moment</div>
+<div class="back-face"><img src="f2.jpeg"></div>
+</div></div>
+
+<div class="flip-card"><div class="flip-inner">
+<div class="front-face">✨ Favorite memory</div>
+<div class="back-face"><img src="f3.jpeg"></div>
+</div></div>
+
+<div class="flip-card"><div class="flip-inner">
+<div class="front-face">💕 Always you</div>
+<div class="back-face"><img src="f4.jpeg"></div>
+</div></div>
+
+</div>
+</section>
+
+<section id="reminder">
+🌸 Never forget how loved you are  
+You are my favorite person, always 💖
+<!-- Realistic Birthday Card -->
+<div id="realCard">
+  <div class="card-wrap">
+    
+    <!-- Front -->
+    <div class="card-front">
+      <div class="ribbon"></div>
+      <h3>Happy Birthday 🎀</h3>
+      <p>Click to open</p>
+      <span>🎂</span>
+    </div>
+
+    <!-- Inside -->
+    <div class="card-inside">
+      <h4>My Love 💖</h4>
+      <p>
+        You are not just special today,  
+        you are my everyday smile 😊 
+        thank you for coming in my life. 
+        Thank you for being my heart,  
+        my world and my magic. 
+
+        I love you always ❤️
+      </p>
+    </div>
+
+  </div>
+</div>
+
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+const targetDate = new Date("Nov 27, 2025 18:00:00").getTime();
+
+function updateCountdown(){
+ const now = Date.now();
+ const diff = targetDate - now;
+ const box = document.getElementById("timerBox");
+ const cont = document.getElementById("countdownContainer");
+
+ if(diff>0){
+  const d=Math.floor(diff/86400000);
+  const h=Math.floor(diff%86400000/3600000);
+  const m=Math.floor(diff%3600000/60000);
+  const s=Math.floor(diff%60000/1000);
+  box.innerHTML=`${d}d : ${h}h : ${m}m : ${s}s`;
+ }
+ else{
+  cont.style.display="none";
+  unlockSurprise();
+  return;
+ }
+
+ setTimeout(updateCountdown,1000);
+}
+updateCountdown();
+
+function unlockSurprise(){
+ document.getElementById("mainTitle").style.display="block";
+ document.getElementById("bigHeart").style.display="block";
+
+ let i=setInterval(()=>createHeart(),350);
+ setTimeout(()=>clearInterval(i),6000);
+}
+
+function createHeart(){
+ const h=document.createElement("div");
+ h.className="heart";
+ h.style.left=Math.random()*100+"vw";
+ h.style.animationDuration=3+Math.random()*2+"s";
+ document.body.appendChild(h);
+ setTimeout(()=>h.remove(),6000);
+}
+
+document.getElementById("bigHeart").onclick=function(){
+ document.getElementById("bgMusic").play();
+ let end=Date.now()+3000;
+
+ (function frame(){
+  confetti({particleCount:5,spread:60});
+  if(Date.now()<end) requestAnimationFrame(frame);
+ })();
+
+ this.style.display="none";
+ document.getElementById("messageBox").style.display="block";
+ setTimeout(()=>document.getElementById("memories").style.display="block",1500);
+ setTimeout(()=>document.getElementById("reminder").style.display="block",3000);
+};
+
+// Real Birthday Card Open
+document.getElementById("realCard").onclick = function(){
+  this.classList.toggle("open");
+};
+
+</script>
+
+</body>
+</html>
